@@ -17,6 +17,7 @@ using System.Text;
 using WebApi.Helpers;
 using WebApi.Swaggers;
 using WebApi.Hubs;
+using WebApi.Filters;
 
 namespace WebApi
 {
@@ -32,7 +33,10 @@ namespace WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers(config =>
+            {
+                // config.Filters.Add(new ExampleActionFilter());
+            });
 
             services.AddSignalR();
 
