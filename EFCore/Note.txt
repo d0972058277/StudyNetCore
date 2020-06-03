@@ -1,0 +1,12 @@
+﻿docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password -d mysql
+
+CREATE SCHEMA `Test` ;
+
+CREATE TABLE `Test`.`user` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  `row_datetime` DATETIME NOT NULL,
+  PRIMARY KEY (`id`));
+
+dotnet ef dbcontext scaffold Name=DefaultConnection Pomelo.EntityFrameworkCore.MySql -o Models
